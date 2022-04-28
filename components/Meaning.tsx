@@ -6,26 +6,25 @@ const Meaning = ({
 }: {
   meaning: {item: IMeaning; key: number};
 }) => {
-  console.log(key);
   return (
     <div className={`mb-2 p-3 ${key % 2 === 0 ? "bg-slate-100" : ""}`}>
-      {item.meanings.map((meaning) => (
-        <div>
+      {item.meanings.map((meaning, idx) => (
+        <div key={idx}>
           {/* Part of Speech */}
-          <p className="text-3xl italic">{meaning.partOfSpeech}</p>
+          <p className="text-2xl italic mb-1">{meaning.partOfSpeech}</p>
 
           {/* Definitions */}
-          <div className="pl-10">
+          <div className="pl-10 mb-5">
             <ol className="list-decimal space-y-2">
-              {meaning.definitions.map((definition) => (
-                <>
+              {meaning.definitions.map((definition, idx) => (
+                <div key={idx}>
                   <li>{definition.definition}</li>
                   {definition?.example && (
                     <p className="text-base text-gray-800 italic">
                       Example: {definition.example}
                     </p>
                   )}
-                </>
+                </div>
               ))}
             </ol>
           </div>
@@ -36,8 +35,10 @@ const Meaning = ({
             <>
               <h3 className="my-1 italic">Synonyms</h3>
               <div className="pl-10 space-x-2 flex flex-wrap">
-                {meaning.synonyms.map((synonym) => (
-                  <span className="bg-blueGreen px-2.5 py-0.5 tracking-wider rounded-full text-white text-sm mb-2 font-semibold cursor-pointer">
+                {meaning.synonyms.map((synonym, idx) => (
+                  <span
+                    key={idx}
+                    className="bg-blueGreen px-2.5 py-0.5 tracking-wider rounded-full text-white text-sm mb-2 font-semibold cursor-pointer">
                     {synonym}
                   </span>
                 ))}
@@ -50,8 +51,10 @@ const Meaning = ({
             <>
               <h3 className="my-1 italic">Antonyms</h3>
               <div className="pl-10 space-x-2 flex flex-wrap">
-                {meaning.antonyms.map((antonym) => (
-                  <span className="bg-blueGreen px-2.5 py-0.5 tracking-wider rounded-full text-white text-sm mb-2 font-semibold cursor-pointer">
+                {meaning.antonyms.map((antonym, idx) => (
+                  <span
+                    key={idx}
+                    className="bg-blueGreen px-2.5 py-0.5 tracking-wider rounded-full text-white text-sm mb-2 font-semibold cursor-pointer">
                     {antonym}
                   </span>
                 ))}
