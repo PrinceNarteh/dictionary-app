@@ -1,7 +1,9 @@
 import React, {FormEvent, useState} from "react";
+import {IMeaning} from "../types/meanings";
 
 const SearchBar = () => {
   const [searchWord, setSearchWord] = useState<string>("");
+  const [word, setWord] = useState<IMeaning | null>(null);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();

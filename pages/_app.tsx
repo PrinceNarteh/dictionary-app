@@ -6,7 +6,7 @@ function MyApp({Component, pageProps}) {
   return (
     <div className="flex flex-col h-screen">
       <Navbar />
-      <div className="flex-grow px-10">
+      <div className="flex-grow px-10 overflow-y-auto pb-5">
         <Component {...pageProps} />
       </div>
       <Footer />
